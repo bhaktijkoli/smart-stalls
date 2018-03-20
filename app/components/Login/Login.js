@@ -1,7 +1,9 @@
 import React from 'react';
-import { View, Text, StyleSheet, KeyboardAvoidingView } from 'react-native';
-import { Container, Header, Content, Form, Item, Input, Label, Button, Toast } from 'native-base';
+import { StyleSheet, KeyboardAvoidingView } from 'react-native';
+import { Container, View, Text, Header, Content, Form, Item, Input, Label, Button, Toast } from 'native-base';
 import { Spinner } from 'native-base';
+
+import styles from './../../utils/styles'
 
 export default class Login extends React.Component {
   static navigationOptions = {
@@ -10,7 +12,7 @@ export default class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state ={
-      login_process: false,
+      process: false,
       password:'',
     }
   }
@@ -24,7 +26,7 @@ export default class Login extends React.Component {
               <Label>Password</Label>
               <Input secureTextEntry={true} value={state.password} onChangeText={value=>this.setState({'password':value})}/>
             </Item>
-            <Button primary block style={styles.button} onPress={this.onSubmit.bind(this)}>
+            <Button primary block style={styles.button} onPress={this.onSubmit.bind(this)} disabled={this.state.process}>
               {this.getLoginText()}
             </Button>
           </Form>
@@ -33,14 +35,14 @@ export default class Login extends React.Component {
     );
   }
   onSubmit() {
-    this.setState({login_process:true})
+    this.setState({process:true})
     if(this.state.password == "12345") {
       this.props.navigation.navigate('Connect');
     } else {
       Toast.show({text: 'Wrong password!', position: 'bottom', buttonText: 'Ok' })
     }
     setTimeout(function () {
-      this.setState({login_process:false})
+      this.setState({process:false})
     }.bind(this), 1000);
   }
   getLoginText() {
@@ -51,13 +53,3 @@ export default class Login extends React.Component {
     }
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-  button: {
-    margin:10
-  }
-});

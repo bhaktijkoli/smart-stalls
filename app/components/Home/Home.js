@@ -1,7 +1,9 @@
 import React from 'react';
-import { View, Text, StyleSheet, KeyboardAvoidingView } from 'react-native';
-import { Container, Header, Content, Form, Item, Input, Label, Button, Toast } from 'native-base';
+import { StyleSheet, KeyboardAvoidingView } from 'react-native';
+import { Container, View, Text, Header, Content, Form, Item, Input, Label, Button, Toast } from 'native-base';
 import { Spinner } from 'native-base';
+
+import styles from './../../utils/styles'
 
 export default class Home extends React.Component {
   static navigationOptions = {
@@ -47,13 +49,3 @@ export default class Home extends React.Component {
     }
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-  button: {
-    margin:10,
-  }
-});

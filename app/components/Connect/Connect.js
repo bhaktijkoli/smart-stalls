@@ -3,6 +3,7 @@ import { StyleSheet, KeyboardAvoidingView } from 'react-native';
 import { Container, View, Text, Header, Body, Title, Content, Form, Item, Input, Label, Button, Toast } from 'native-base';
 import { Spinner } from 'native-base';
 
+import styles from './../../utils/styles';
 import request from './../../utils/request';
 
 export default class Connect extends React.Component {
@@ -27,7 +28,7 @@ export default class Connect extends React.Component {
             Connect to the stall wifi.
           </Text>
           <Form>
-            <Button primary block style={styles.button} onPress={this.onSubmit.bind(this)}>
+            <Button primary block style={styles.button} onPress={this.onSubmit.bind(this)} disabled={this.state.process}>
               {this.getButtonText()}
             </Button>
           </Form>
@@ -58,13 +59,3 @@ export default class Connect extends React.Component {
     }
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-  button: {
-    margin:10,
-  }
-});
