@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet, KeyboardAvoidingView } from 'react-native';
-import { Container, Header, Body, Title, Content, Form, Item, Input, Label, Button, Toast } from 'native-base';
+import { StyleSheet, KeyboardAvoidingView } from 'react-native';
+import { Container, View, Text, Header, Body, Title, Content, Form, Item, Input, Label, Button, Toast } from 'native-base';
 import { Spinner } from 'native-base';
 
 import request from './../../utils/request';
@@ -15,11 +15,17 @@ export default class Connect extends React.Component {
       process: false,
     }
   }
+  componentDidMount() {
+    this.setState({process:false})
+  }
   render() {
     var state = this.state;
     return (
       <Container style={styles.container}>
-        <Content style={{flex:1,marginTop:'10%'}}>
+        <Content style={{flex:1,marginTop:'30%'}}>
+          <Text style={{alignSelf:'center'}}>
+            Connect to the stall wifi.
+          </Text>
           <Form>
             <Button primary block style={styles.button} onPress={this.onSubmit.bind(this)}>
               {this.getButtonText()}
@@ -33,16 +39,16 @@ export default class Connect extends React.Component {
     this.setState({process:true});
     request.makePost('/status', [])
     .then((req)=> {
+      this.setState({process:false})
       console.log(req);
+      if(req.data = "1") {
+        this.props.navigation.navigate('Home');
+      }
     })
     .catch((req)=> {
       console.log(req);
-    })
-    return;
-    setTimeout(function () {
       this.setState({process:false});
-      this.props.navigation.navigate('Home');
-    }.bind(this), 3000);
+    })
   }
   getButtonText() {
     if(this.state.process) {
