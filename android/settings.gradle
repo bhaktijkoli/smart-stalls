@@ -1,0 +1,3 @@
+rootProject.name = 'smartStalls'
+
+include ':app'
