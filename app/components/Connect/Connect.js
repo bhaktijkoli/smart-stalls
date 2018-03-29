@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, KeyboardAvoidingView } from 'react-native';
 import { Container, View, Text, Header, Body, Title, Content, Form, Item, Input, Label, Button, Toast } from 'native-base';
 import { Spinner } from 'native-base';
+import { NavigationActions } from 'react-navigation';
 
 import styles from './../../utils/styles';
 import request from './../../utils/request';
@@ -17,6 +18,7 @@ export default class Connect extends React.Component {
     }
   }
   componentDidMount() {
+    // this.props.navigation.dispatch(navAction)
     this.setState({process:false})
   }
   render() {
@@ -59,3 +61,9 @@ export default class Connect extends React.Component {
     }
   }
 }
+
+const navAction = NavigationActions.reset({
+    index: 0,
+    key: null,
+    actions: [NavigationActions.navigate({ routeName: 'Connect' })]
+})

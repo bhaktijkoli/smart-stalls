@@ -5,6 +5,7 @@ import { Root } from 'native-base';
 import LoginScreen from './app/components/Login/Login'
 import ConnectScreen from './app/components/Connect/Connect'
 import HomeScreen from './app/components/Home/Home'
+import RegisterScreen from './app/components/Home/Register'
 
 export default class App extends React.Component {
   render() {
@@ -25,5 +26,8 @@ const RootStack = StackNavigator({
   },
   Home: {
     screen: HomeScreen,
+  },
+  Register: {
+    screen: RegisterScreen,
   },
 });

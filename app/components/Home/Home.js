@@ -19,15 +19,15 @@ export default class Home extends React.Component {
     var state = this.state;
     return (
         <Container style={styles.container}>
-          <Content style={{flex:1,marginTop:'10%'}}>
+          <Content style={{flex:1}}>
             <Form>
-              <Button primary block style={styles.button} onPress={this.onSubmit.bind(this)}>
+              <Button primary block style={styles.button} onPress={(e)=>this.props.navigation.navigate('Register')}>
                 <Text> Register </Text>
               </Button>
-              <Button primary block style={styles.button} onPress={this.onSubmit.bind(this)}>
+              <Button primary block style={styles.button} onPress={(e)=>this.props.navigation.navigate('Register')}>
                 <Text> Remove </Text>
               </Button>
-              <Button primary block style={styles.button} onPress={this.onSubmit.bind(this)}>
+              <Button primary block style={styles.button} onPress={(e)=>this.props.navigation.navigate('Register')}>
                 <Text> Reset </Text>
               </Button>
             </Form>
