@@ -40,18 +40,18 @@ export default class Connect extends React.Component {
   }
   onSubmit() {
     this.setState({process:true});
-    request.makePost('/status', [])
-    .then((req)=> {
-      this.setState({process:false})
-      console.log(req);
-      if(req.data = "1") {
+    var ws = new WebSocket("ws://192.168.4.1:81");
+    global.ws = ws;
+    ws.onmessage = (e) => {
+      this.setState({process:false});
+      if(e.data = "1") {
         this.props.navigation.navigate('Home');
       }
-    })
-    .catch((req)=> {
-      console.log(req);
+    }
+    ws.onerror = (e) => {
+      console.log(e.message);
       this.setState({process:false});
-    })
+    }
   }
   getButtonText() {
     if(this.state.process) {
