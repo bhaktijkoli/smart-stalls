@@ -7,6 +7,13 @@ const styles = StyleSheet.create({
   },
   button: {
     margin:10
+  },
+  modal: {
+    marginTop: '20%',
+    marginLeft: 20,
+    marginRight: 20,
+    alignItems:'center',
+    flex: 1,
   }
 });
 
