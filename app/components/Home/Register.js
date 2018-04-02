@@ -24,6 +24,19 @@ export default class Home extends React.Component {
   }
   render() {
     var state = this.state;
+    if(state.modal) {
+      return(
+        <Container style={styles.container}>
+          <Content style={{flex:1}}>
+            <View style={styles.modal}>
+              <Image style={{marginTop:'40%'}} source={FingerPrintImg}></Image>
+              <Text style={{marginTop:20}}>{state.message}</Text>
+              {this.getSuccessButton()}
+            </View>
+          </Content>
+        </Container>
+      )
+    }
     return (
       <Container style={styles.container}>
         <Modal
@@ -81,7 +94,6 @@ export default class Home extends React.Component {
     }
   }
   getSuccessButton() {
-    console.log(this.props.navigation)
     if(this.state.success) {
       return <Button transparent block style={styles.button} onPress={this.goHome.bind(this)}><Text>Next</Text></Button>
     }
